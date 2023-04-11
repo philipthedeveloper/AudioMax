@@ -1,0 +1,571 @@
+:root {
+  --backgroundBlack: rgb(16, 14, 20);
+  --playlistBackgroundColor: rgb(10, 4, 22);
+  --primaryColor: rgb(57, 23, 124);
+  --primaryHoverColor: rgb(51, 15, 124);
+  --buttonHoverColor: rgb(67, 17, 168);
+  --shadowColor: rgba(74, 24, 175, 0.274);
+  --textWhite: rgb(231, 231, 231);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  background-color: var(--backgroundBlack);
+  font-family: "Truculenta";
+  overflow: hidden;
+}
+
+body > header {
+  box-shadow: 0px 2px 6px var(--shadowColor);
+  padding: 1.8em 1rem;
+  height: 20vh;
+}
+
+.logo {
+  margin-left: 3rem;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+body > header .logo h1 {
+  color: var(--textWhite);
+  font-size: 3rem;
+  font-style: italic;
+}
+
+body > header .logo p {
+  color: var(--primaryColor);
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Styling the main page */
+main {
+  display: flex;
+}
+
+#file-control-panel {
+  width: 20%;
+  box-shadow: 2px 0px 6px var(--shadowColor);
+  height: 80vh;
+}
+#media-player {
+  width: 80%;
+  height: 80vh;
+  background-color: var(--primaryColor);
+}
+#file-control-panel button {
+  background-color: var(--primaryColor);
+  border-radius: 0.2rem;
+  border: none;
+  outline: none;
+  margin: 1rem;
+  padding: 0.7rem;
+  color: var(--textWhite);
+  font-weight: bold;
+  font-size: 0.9rem;
+  font-family: inherit;
+  width: calc(100% - 2rem);
+  cursor: pointer;
+}
+
+#file-control-panel button:hover {
+  background-color: var(--buttonHoverColor);
+}
+
+.playlist-container {
+  margin: 1rem;
+}
+
+.playlist-container .playlist header {
+  display: flex;
+  align-items: center;
+  padding: 0.3rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  margin-bottom: 0.4rem;
+}
+
+.playlist.open header {
+  box-shadow: 0px 0px 4px var(--primaryHoverColor);
+}
+
+.playlist-container .playlist header i {
+  display: inline-block;
+  margin-right: 0.5rem;
+  width: 15px;
+  color: var(--primaryColor);
+  pointer-events: none;
+}
+
+.playlist-container .playlist header .playlist-name {
+  color: var(--textWhite);
+  text-transform: capitalize;
+  pointer-events: none;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  white-space: nowrap;
+}
+
+.playlist-container .playlist .list {
+  /* background-color: var(--playlistBackgroundColor); */
+  /* padding: 0.5rem; */
+  padding-left: calc(15px + 0.5rem);
+  overflow: hidden;
+  transition: 0.4s;
+  max-height: 0;
+}
+.playlist-container .playlist .list p {
+  margin-bottom: 0.3rem;
+  color: var(--primaryColor);
+  text-transform: capitalize;
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* .playlist-container .playlist .list .file:hover {
+  box-shadow: 0px 0px 4px var(--primaryHoverColor);
+} */
+
+.playlist-container .playlist .list p i {
+  display: inline-block;
+  width: 15px;
+  margin-right: 0.5rem;
+}
+
+/* 
+* STYLE FOR MODAL
+ */
+
+.modal {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(16, 14, 20, 0.3);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+}
+
+.playlist-modal {
+  justify-content: flex-start;
+  padding-left: 20%;
+}
+
+.playlist-modal .new-modal {
+  width: 300px;
+}
+
+.modal.open {
+  display: flex;
+}
+
+.new-modal,
+.confirm-modal {
+  width: 400px;
+  height: 250px;
+  box-shadow: 0px 3px 6px var(--primaryHoverColor),
+    0px 6px 15px var(--shadowColor);
+  background-color: var(--backgroundBlack);
+  position: relative;
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+
+.new-modal {
+  min-height: 300px;
+}
+
+.new-modal span {
+  display: inline-block;
+  color: var(--textWhite);
+  position: absolute;
+  font-weight: bold;
+  font-size: 1.5rem;
+  right: 0;
+  bottom: 0;
+  border: none !important;
+  width: 60px;
+  text-align: center;
+}
+
+.new-modal span:hover {
+  background-color: var(--primaryColor);
+}
+
+.new-modal {
+  color: var(--primaryColor);
+}
+.new-modal p:hover {
+  background-color: var(--primaryColor);
+  color: var(--textWhite);
+}
+
+.new-modal span,
+.new-modal p {
+  padding: 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--primaryColor);
+}
+
+.playlist-modal .new-modal p {
+  border: none;
+}
+.playlist-modal .new-modal p i {
+  display: inline-block;
+  width: 25px;
+  margin-right: 0.2rem;
+}
+
+.playlist-form form,
+.rename-playlist form,
+.add-song form {
+  background-color: var(--backgroundBlack);
+  padding: 1rem;
+  border-radius: 0.4rem;
+  min-width: 300px;
+}
+
+.playlist-form form h2,
+.rename-playlist form h2,
+.add-song form h2 {
+  color: var(--textWhite);
+}
+
+.playlist-form form .form_group,
+.rename-playlist form .form_group,
+.add-song form .form_group {
+  margin-top: 1rem;
+}
+
+.playlist-form form .form_group label,
+.rename-playlist form .form_group label,
+.add-song form .form_group label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  color: var(--primaryColor);
+}
+
+.playlist-form form .form_group input,
+.rename-playlist form .form_group input,
+.add-song form .form_group input,
+.add-song form .form_group select,
+.playlist-form form button,
+.rename-playlist form button,
+.add-song form button {
+  display: inline-block;
+  width: 100%;
+  padding: 0.8rem 0.7rem;
+  border-radius: 0.4rem;
+  border: 2px solid var(--primaryColor);
+  outline: 0px;
+  background-color: transparent;
+  transition: 0.4s;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--textWhite);
+}
+
+.add-song form .form_group option {
+  padding: 1rem;
+  color: var(--textWhite);
+}
+
+.add-song form .form_group option:hover {
+  padding: 1rem;
+  color: var(--textWhite);
+  background-color: var(--primaryColor);
+}
+
+.playlist-form form button,
+.rename-playlist form button,
+.add-song form button {
+  border: none;
+  background-color: var(--primaryColor);
+  margin-top: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.4s;
+}
+
+.playlist-form form button:hover,
+.rename-playlist form button:hover,
+.add-song form button:hover {
+  background-color: var(--buttonHoverColor);
+}
+
+.fill_all {
+  border-radius: 0.2rem;
+  background-color: white;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  position: fixed;
+  right: 0;
+  top: 0;
+  animation: popin 0.3s cubic-bezier(0, 0, 0.37, 1.2) 0s 1 normal forwards;
+  transform-origin: right;
+  transform: translateX(100%);
+  display: none;
+  z-index: 14;
+}
+
+.fill_all.show {
+  display: flex;
+  align-items: center;
+}
+
+.fill_all::before {
+  position: absolute;
+  content: "";
+  display: block;
+  background-color: red;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  animation: loader 1s ease 0.5s 1 normal forwards;
+  transform-origin: right;
+}
+
+.fill_all.success::before {
+  background-color: green;
+}
+
+.fill_all.loading::before {
+  background-color: var(--primaryColor);
+  animation-duration: 10s;
+}
+
+@keyframes popin {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes loader {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+.fill_all p {
+  color: red;
+  font-size: 0.9rem;
+  margin-left: 1rem;
+}
+
+.fill_all.success p {
+  color: var(--primaryColor);
+}
+
+.fill_all img {
+  width: 30px;
+}
+
+.spinner-3 {
+  margin-right: 1rem;
+  width: 25px;
+  padding: 5px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--playlistBackgroundColor);
+  --_m: conic-gradient(#0000 10%, #000), linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+  mask: var(--_m);
+  -webkit-mask-composite: source-out;
+  mask-composite: subtract;
+  animation: s3 1s infinite linear;
+  display: none;
+}
+@keyframes s3 {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* Styling the confrim modal */
+.confirm-modal {
+  padding: 1.4rem;
+  padding-top: 2rem;
+  min-height: 180px;
+  max-height: 200px;
+}
+
+.confirm-modal h2 {
+  color: var(--textWhite);
+}
+
+.confirm-modal .confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.4rem;
+}
+
+.confirm-actions button {
+  margin-left: 1rem;
+  border: 2px solid var(--primaryColor);
+  outline: none;
+  color: var(--textWhite);
+  background-color: var(--primaryColor);
+  padding: 0.7rem 1.7rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: inherit;
+  font-weight: bold;
+}
+
+.confirm-actions button:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirm-actions button:last-child {
+  background-color: transparent;
+  border: 2px solid var(--primaryColor);
+  color: var(--primaryColor);
+}
+
+.confirm-actions button:first-child:hover {
+  background-color: transparent;
+  color: var(--primaryColor);
+}
+
+.confirm-actions button:last-child:hover {
+  background-color: var(--primaryColor);
+  color: var(--textWhite);
+}
+
+::-webkit-file-upload-button {
+  background-color: var(--primaryColor);
+  border: none;
+  outline: none;
+  display: none;
+}
+
+/* ::-webkit-file-upload-button::before {
+  content: "<i class='fa-solid fa-pen'></i>";
+  display: block;
+} */
+
+.audio-upload-container,
+.thumbnail-upload-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.audio-upload-container .fa-cloud-arrow-up,
+.thumbnail-upload-container .fa-cloud-arrow-up {
+  position: absolute;
+  right: 1rem;
+  color: var(--primaryColor);
+  cursor: pointer;
+}
+
+/*the container must be positioned relative:*/
+.add-song .form_group .custom-select {
+  position: relative;
+}
+
+.add-song .form_group .custom-select select {
+  display: none;
+}
+
+.select-selected {
+  background-color: transparent;
+  border: 2px solid var(--primaryColor);
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: var(--primaryColor) transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent var(--primaryColor) transparent;
+  top: calc(50% - 6px);
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,
+.select-selected {
+  color: var(--textWhite);
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent var(--primaryColor) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+.select-selected {
+  border: 1px solid var(--primaryColor);
+  padding: 0.8rem 0.7rem;
+  border-radius: 0.4rem;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: var(--primaryColor);
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  background-color: var(--buttonHoverColor);
+}

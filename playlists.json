@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Playlist_A",
+    "size": 3,
+    "audios": [
+      {
+        "name": "Night_Away_Dance",
+        "path": "A1_x_J1_Tion_Wayne_Night_Away_Dance.mp3"
+      },
+      {
+        "name": "All_The_Way_Up",
+        "path": "Fat_Joe_Remy_Ma_JAY_Z_ft_French_Montana_Infared_-_All_The_Way_Up.mp3"
+      },
+      {
+        "name": "Kayode_-_Side_Guy",
+        "path": "Kayode_-_Side_Guy.mp3",
+        "thumbnail": "jr-korpa-SFT9G3pAxLY-unsplash.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Playlist_B",
+    "size": 1,
+    "audios": [
+      {
+        "name": "The_Box",
+        "path": "Roddy_Ricch_-_The_Box.mp3"
+      }
+    ]
+  },
+  {
+    "name": "Roddy",
+    "size": 1,
+    "audios": [
+      {
+        "name": "Roddy_Ricch_-_The_Box_thinknews.com.ng",
+        "path": "Roddy_Ricch_-_The_Box_thinknews.com.ng.mp3",
+        "thumbnail": "jr-korpa-SFT9G3pAxLY-unsplash.jpg"
+      }
+    ]
+  }
+]

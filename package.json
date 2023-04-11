@@ -1,0 +1,17 @@
+{
+  "name": "audiomax",
+  "version": "1.0.0",
+  "description": "A local server side rendered music player",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --experimental-json-modules index"
+  },
+  "author": "philipthedeveloper",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1"
+  }
+}
